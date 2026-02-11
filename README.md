@@ -53,12 +53,13 @@ Bash
 pip install -r requirements.txt
 Note: Ensure requirements.txt includes fastapi, uvicorn, pydantic, pandas, scikit-learn, joblib, jinja2, and python-multipart.
 
+![output](images/docker.jpg)
+![Doutput](images/docker.jpg)
+![result](Screenshot 2026-02-11 133711.jpg)
+
 ▶️ Usage
 To start the server, run the following command from the project root:
 
 Bash
 uvicorn app.main:app --reload
 The server will start at http://127.0.0.1:8000.
-![Project Structure](screenshots/project_structure.png)
-
-![AWS S3 Organization](screenshots/s3_organization.png)
