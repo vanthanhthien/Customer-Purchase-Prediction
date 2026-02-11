@@ -59,3 +59,6 @@ To start the server, run the following command from the project root:
 Bash
 uvicorn app.main:app --reload
 The server will start at http://127.0.0.1:8000.
+![Project Structure](screenshots/project_structure.png)
+
+![AWS S3 Organization](screenshots/s3_organization.png)
