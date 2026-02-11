@@ -7,45 +7,41 @@ from fastapi.responses import HTMLResponse
 from app.models.prediction import CustomerData, PredictionResponse
 from app.services.predictor import PredictorService
 
-# Get the directory of this file (app directory)
+# Lấy thư mục chứa file này (thư mục app)
 app_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Initialize FastAPI app
+# Khởi tạo ứng dụng FastAPI
 app = FastAPI(title="Purchase Prediction API")
 
-# Mount static files directory (using absolute path)
+# Gắn thư mục chứa file tĩnh (dùng đường dẫn tuyệt đối)
 static_dir = os.path.join(app_dir, "static")
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
-# Set up templates directory (using absolute path)
+# Cấu hình thư mục chứa template (dùng đường dẫn tuyệt đối)
 templates_dir = os.path.join(app_dir, "templates")
 templates = Jinja2Templates(directory=templates_dir)
 
-# Construct the absolute path for the model file
-# Assumes your project structure is:
-#   Project_Root/
-#     app/
-#       main.py
-#     downloaded_model/
+# Tạo đường dẫn tuyệt đối đến file mô hình
+
 base_dir = os.path.dirname(app_dir)
 model_path = os.path.join(base_dir, "downloaded_model", "purchase_prediction_model.pkl")
 
-# Initialize predictor service with the absolute model path
+# Khởi tạo dịch vụ dự đoán với đường dẫn mô hình tuyệt đối
 predictor_service = PredictorService(model_path)
 
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request):
-    """Home page"""
+    """Trang chủ"""
     return templates.TemplateResponse("base.html", {"request": request})
 
 @app.post("/predict")
 async def predict(data: CustomerData):
-    """API endpoint for prediction"""
+    """API endpoint để dự đoán"""
     return predictor_service.predict(data)
 
 @app.get("/predict-view", response_class=HTMLResponse)
 async def predict_form(request: Request):
-    """Web form for prediction"""
+    """Giao diện web để nhập dữ liệu dự đoán"""
     return templates.TemplateResponse("prediction_form.html", {"request": request})
 
 @app.post("/predict-view", response_class=HTMLResponse)
@@ -59,8 +55,8 @@ async def predict_form_submit(
     is_returning_customer: int = Form(...),
     days_since_last_visit: float = Form(...)
 ):
-    """Handle form submission and display result"""
-    # Create CustomerData from form inputs
+    """Xử lý form và hiển thị kết quả"""
+    # Tạo đối tượng CustomerData từ dữ liệu nhập trên form
     data = CustomerData(
         age=age,
         time_spent_on_site=time_spent_on_site,
@@ -71,10 +67,10 @@ async def predict_form_submit(
         days_since_last_visit=days_since_last_visit
     )
     
-    # Make prediction
+    # Dự đoán kết quả
     result = predictor_service.predict(data)
     
-    # Return form with result
+    # Trả về form kèm kết quả dự đoán
     return templates.TemplateResponse(
         "prediction_form.html",
         {

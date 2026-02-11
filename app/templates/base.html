@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Purchase Prediction App</title>
+    <title>Ứng dụng Dự đoán Mua hàng</title>
     <link rel="stylesheet" href="{{ url_for('static', path='/css/styles.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
-            <h1 class="navbar-brand">Purchase Predictor</h1>
+            <h1 class="navbar-brand">Dự đoán Mua hàng</h1>
             <ul class="navbar-nav">
-                <li><a href="/">Home</a></li>
-                <li><a href="/predict-view">Prediction Form</a></li>
-                <li><a href="/docs">API Docs</a></li>
+                <li><a href="/">Trang chủ</a></li>
+                <li><a href="/predict-view">Biểu mẫu dự đoán</a></li>
+                <!-- Đã xóa mục Tài liệu API -->
             </ul>
         </div>
     </nav>
@@ -20,16 +20,16 @@
     {% block content %}
     <div class="container">
         <div class="welcome">
-            <h1>Customer Purchase Prediction</h1>
-            <p>This application predicts whether a customer is likely to make a purchase based on their behavior and characteristics.</p>
+            <h1>Dự đoán khả năng khách hàng mua hàng</h1>
+            <p>Ứng dụng này dự đoán khả năng một khách hàng sẽ mua hàng dựa trên hành vi và đặc điểm của họ.</p>
             
             <div class="options">
-                <a href="/predict-view" class="btn btn-primary">Use Web Interface</a>
-                <a href="/docs" class="btn btn-secondary">API Documentation</a>
+                <a href="/predict-view" class="btn btn-primary">Giao diện web</a>
+                <!-- Đã xóa nút Tài liệu API -->
             </div>
             
             <div class="api-example">
-                <h2>API Usage Example</h2>
+                <h2>Ví dụ sử dụng API</h2>
                 <pre>
 POST /predict
 {
