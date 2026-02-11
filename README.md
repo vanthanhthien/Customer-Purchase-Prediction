@@ -66,4 +66,5 @@ The server will start at http://127.0.0.1:8000.
 
 <img width="1145" height="353" alt="image" src="https://github.com/user-attachments/assets/7598f7d0-9128-4318-8647-76c9b42a61a0" />
 
-<img width="5857" height="659" alt="image" src="https://github.com/user-attachments/assets/c6d4298b-b3f2-4903-8355-14a735912266" />
+<img width="5857" height="659" alt="image" src="[https://github.com/user-attachments/assets/c6d4298b-b3f2-4903-8355-14a735912266](https://github.com/vanthanhthien/Customer-Purchase-Prediction/blob/main/output_heatmap.png)" />
+
